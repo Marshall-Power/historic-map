@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { CldUploadWidget } from "next-cloudinary";
 
 interface CloudinaryResultType {
@@ -25,6 +25,8 @@ export default function PinForm() {
     description: "",
     tags: "",
   });
+  const formRef = useRef<HTMLFormElement>(null);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -59,80 +61,94 @@ export default function PinForm() {
     }
 
     const json = await res.json();
+    formRef.current?.reset();
+    setImageUrl(undefined);
+    setPublicId(undefined);
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 3000); // auto-hide after 3s
     console.log("Inserted pin:", json);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="number"
-        name="latitude"
-        placeholder="Latitude"
-        onChange={handleChange}
-        min={-90}
-        max={90}
-        step="any"
-        required
-      />
-      <input
-        type="number"
-        name="longitude"
-        placeholder="Longitude"
-        onChange={handleChange}
-        min={-180}
-        max={180}
-        step="any"
-        required
-      />
-      <input
-        type="text"
-        name="street"
-        placeholder="Street"
-        maxLength={200}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="altText"
-        placeholder="Image alt text"
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        name="yearTaken"
-        placeholder="Year Taken"
-        min={1}
-        max={new Date().getFullYear()}
-        onChange={handleChange}
-      />
-      <textarea
-        name="description"
-        placeholder="Description"
-        onChange={handleChange}
-      />
-      <input
-        name="tags"
-        placeholder="Tags (comma-separated)"
-        onChange={handleChange}
-      />
+    <>
+      <form ref={formRef} onSubmit={handleSubmit}>
+        <input
+          type="number"
+          name="latitude"
+          placeholder="Latitude"
+          onChange={handleChange}
+          min={-90}
+          max={90}
+          step="any"
+          required
+        />
+        <input
+          type="number"
+          name="longitude"
+          placeholder="Longitude"
+          onChange={handleChange}
+          min={-180}
+          max={180}
+          step="any"
+          required
+        />
+        <input
+          type="text"
+          name="street"
+          placeholder="Street"
+          maxLength={200}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="altText"
+          placeholder="Image alt text"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="yearTaken"
+          placeholder="Year Taken"
+          min={1}
+          max={new Date().getFullYear()}
+          onChange={handleChange}
+        />
+        <textarea
+          name="description"
+          placeholder="Description"
+          onChange={handleChange}
+        />
+        <input
+          name="tags"
+          placeholder="Tags (comma-separated)"
+          onChange={handleChange}
+        />
 
-      <CldUploadWidget
-        signatureEndpoint="/api/sign-cloudinary-params"
-        onSuccess={(result) => {
-          const info = (result as CloudinaryResultType).info;
-          setImageUrl(info.secure_url);
-          setPublicId(info.public_id);
-        }}
-      >
-        {({ open }) => (
-          <button type="button" onClick={() => open()}>
-            Upload image
-          </button>
+        <CldUploadWidget
+          signatureEndpoint="/api/sign-cloudinary-params"
+          onSuccess={(result, { widget }) => {
+            const info = (result as CloudinaryResultType).info;
+            setImageUrl(info.secure_url);
+            setPublicId(info.public_id);
+          }}
+        >
+          {({ open }) => (
+            <button type="button" onClick={() => open()}>
+              Upload image
+            </button>
+          )}
+        </CldUploadWidget>
+
+        {imageUrl && (
+          <img src={imageUrl} alt="preview" style={{ width: 200 }} />
         )}
-      </CldUploadWidget>
-
-      {imageUrl && <img src={imageUrl} alt="preview" style={{ width: 200 }} />}
-      <button type="submit">Save Pin</button>
-    </form>
+        <button type="submit">Save Pin</button>
+      </form>
+      {submitted && (
+        <div className="bg-green-200 text-green-900 p-2 rounded mt-2">
+          Enviat!
+        </div>
+      )}
+    </>
   );
 }
