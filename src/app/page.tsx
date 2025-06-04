@@ -1,5 +1,5 @@
 import Image from "next/image";
-import PinForm from "@/components/PinsForm";
+import { MapContainer, TileLayer, useMap } from 'react-leaflet'
 
 export default function Home() {
   return (
