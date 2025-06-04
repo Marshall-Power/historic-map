@@ -1,29 +1,64 @@
-'use client';
+"use client";
 
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+import { useEffect, useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+import { CldImage } from "next-cloudinary";
+import "leaflet/dist/leaflet.css";
 
-// Fix default icon issues in Next.js
 delete (L.Icon.Default as any).prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconUrl: '/leaflet/marker-icon.png',
-  iconRetinaUrl: '/leaflet/marker-icon-2x.png',
-  shadowUrl: '/leaflet/marker-shadow.png',
+  iconUrl: "/leaflet/marker-icon.png",
+  iconRetinaUrl: "/leaflet/marker-icon-2x.png",
+  shadowUrl: "/leaflet/marker-shadow.png",
 });
 
+type Pin = {
+  _id: string;
+  latitude: number;
+  longitude: number;
+  street?: string;
+  imageUrl?: string;
+};
+
 export default function Map() {
+  const [pins, setPins] = useState<Pin[]>([]);
+
+  useEffect(() => {
+    fetch("/api/pins")
+      .then((res) => res.json())
+      .then((data) => setPins(data));
+  }, []);
+  console.log(pins);
   return (
-    <MapContainer center={[41.9833, 2.8167]} zoom={13} style={{ height: '80vh', width: '100%' }}>
+    <MapContainer
+      center={[41.98311, 2.82493]}
+      zoom={13}
+      style={{ height: "80vh", width: "100%" }}
+    >
       <TileLayer
-        attribution='&copy; OpenStreetMap'
+        attribution="&copy; OpenStreetMap"
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[41.387, 2.169]}>
-        <Popup>
-          Example historic photo.
-        </Popup>
-      </Marker>
+      {pins.map((pin) => (
+        <Marker key={pin._id} position={[pin.latitude, pin.longitude]}>
+          <Popup>
+            <div>
+              <strong>{pin.street}</strong>
+              {pin.imageUrl && (
+                <CldImage
+                  src={pin.imageUrl} // This can be public ID or full URL
+                  width="100"
+                  height="75"
+                  alt={pin.street ?? "Historic photo"}
+                  crop="fill"
+                  gravity="auto"
+                />
+              )}
+            </div>
+          </Popup>
+        </Marker>
+      ))}
     </MapContainer>
   );
 }

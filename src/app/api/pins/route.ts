@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
 
+export async function GET(req: NextRequest) {
+    const client = await clientPromise;
+    const db = client.db("historical_map"); // or db('your-db-name')
+    const pins = await db.collection('pins').find().toArray();
+  
+    return NextResponse.json(pins);
+  }
+
 export async function POST(req: NextRequest) {
     try {
         const data = await req.json();
