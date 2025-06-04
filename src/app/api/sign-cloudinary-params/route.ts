@@ -1,5 +1,3 @@
-"use client"
-
 import { v2 as cloudinary } from "cloudinary";
 import { NextResponse } from "next/server";
 
