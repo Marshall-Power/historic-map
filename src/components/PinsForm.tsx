@@ -53,7 +53,7 @@ export default function PinForm() {
     });
 
     if (!res.ok) {
-      const text = await res.text(); 
+      const text = await res.text();
       console.error("Error response:", text);
       throw new Error(`Server error: ${res.status}`);
     }
@@ -65,32 +65,44 @@ export default function PinForm() {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        type="number"
         name="latitude"
         placeholder="Latitude"
         onChange={handleChange}
+        min={-90}
+        max={90}
+        step="any"
         required
       />
       <input
+        type="number"
         name="longitude"
         placeholder="Longitude"
         onChange={handleChange}
+        min={-180}
+        max={180}
+        step="any"
         required
       />
       <input
+        type="text"
         name="street"
         placeholder="Street"
+        maxLength={200}
         onChange={handleChange}
-        required
       />
       <input
+        type="text"
         name="altText"
         placeholder="Image alt text"
         onChange={handleChange}
       />
       <input
+        type="number"
         name="yearTaken"
         placeholder="Year Taken"
-        type="number"
+        min={1}
+        max={new Date().getFullYear()}
         onChange={handleChange}
       />
       <textarea

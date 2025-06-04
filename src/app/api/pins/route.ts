@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
 
-export async function GET(req: NextRequest) {
+export async function GET(_: NextRequest) {
     const client = await clientPromise;
     const db = client.db("historical_map"); // or db('your-db-name')
     const pins = await db.collection('pins').find().toArray();
@@ -30,8 +30,8 @@ export async function POST(req: NextRequest) {
         const pins = db.collection("pins");
 
         const result = await pins.insertOne({
-            latitude: parseFloat(latitude),
-            longitude: parseFloat(longitude),
+            latitude,
+            longitude,
             street,
             imageUrl,
             publicId,
