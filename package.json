@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^4.6.1",
     "cloudinary": "^2.6.1",
     "leaflet": "^1.9.4",
     "mongodb": "^6.16.0",
