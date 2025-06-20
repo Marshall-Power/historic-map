@@ -142,7 +142,7 @@ export default function PinForm() {
         {imageUrl && (
           <img src={imageUrl} alt="preview" style={{ width: 200 }} />
         )}
-        <button type="submit">Save Pin</button>
+        <button className='p-16' type="submit">Enviar Pin</button>
       </form>
       {submitted && (
         <div className="bg-green-200 text-green-900 p-2 rounded mt-2">
