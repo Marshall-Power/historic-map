@@ -51,7 +51,7 @@ export default function Map() {
                   width="100"
                   height="75"
                   alt={pin.street ?? "Historic photo"}
-                  crop="fill"
+                  crop="fit"
                   gravity="auto"
                 />
               )}

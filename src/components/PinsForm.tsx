@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { CldUploadWidget } from "next-cloudinary";
-import { UploadPin, UploadImage } from "@/icons"
+import { UploadPin, UploadImage } from "@/icons";
 interface CloudinaryResultType {
   info: {
     secure_url: string;
@@ -159,7 +159,7 @@ export default function PinForm() {
           <img src={imageUrl} alt="preview" style={{ width: 200 }} />
         )}
         <button
-          className="mt-12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full flex justify-center"
+          className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full flex justify-center"
           type="submit"
         >
           <UploadPin className="mr-2" />
