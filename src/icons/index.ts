@@ -1,0 +1,2 @@
+export { default as UploadImage } from './upload_image.svg';
+export { default as UploadPin } from './upload_pin.svg';
