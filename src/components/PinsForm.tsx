@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { CldUploadWidget } from "next-cloudinary";
+import SendPin from "/public/icons/send_pin.svg";
 
 interface CloudinaryResultType {
   info: {
@@ -71,11 +72,16 @@ export default function PinForm() {
 
   return (
     <>
-      <form ref={formRef} onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col gap-2"
+        ref={formRef}
+        onSubmit={handleSubmit}
+      >
         <input
+          className="border-solid border-black border-1 rounded-lg px-[12px] py-[4px]"
           type="number"
           name="latitude"
-          placeholder="Latitude"
+          placeholder="Latitud"
           onChange={handleChange}
           min={-90}
           max={90}
@@ -83,9 +89,10 @@ export default function PinForm() {
           required
         />
         <input
+          className="border-solid border-black border-1 rounded-lg px-[12px] py-[4px]"
           type="number"
           name="longitude"
-          placeholder="Longitude"
+          placeholder="Longitud"
           onChange={handleChange}
           min={-180}
           max={180}
@@ -93,34 +100,39 @@ export default function PinForm() {
           required
         />
         <input
+          className="border-solid border-black border-1 rounded-lg px-[12px] py-[4px]"
           type="text"
           name="street"
-          placeholder="Street"
+          placeholder="Carrer"
           maxLength={200}
           onChange={handleChange}
         />
         <input
+          className="border-solid border-black border-1 rounded-lg px-[12px] py-[4px]"
           type="text"
           name="altText"
-          placeholder="Image alt text"
+          placeholder="Text Alt Imatge"
           onChange={handleChange}
         />
         <input
+          className="border-solid border-black border-1 rounded-lg px-[12px] py-[4px]"
           type="number"
           name="yearTaken"
-          placeholder="Year Taken"
+          placeholder="Any"
           min={1}
           max={new Date().getFullYear()}
           onChange={handleChange}
         />
         <textarea
+          className="border-solid border-black border-1 rounded-lg px-[12px] py-[4px]"
           name="description"
-          placeholder="Description"
+          placeholder="Descripció"
           onChange={handleChange}
         />
         <input
+          className="border-solid border-black border-1 rounded-lg px-[12px] py-[4px]"
           name="tags"
-          placeholder="Tags (comma-separated)"
+          placeholder="Tags (separats amb commes)"
           onChange={handleChange}
         />
 
@@ -133,8 +145,23 @@ export default function PinForm() {
           }}
         >
           {({ open }) => (
-            <button type="button" onClick={() => open()}>
-              Upload image
+            <button
+              className="font-bold text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 rounded-full text-sm px-5 py-2.5 text-center my-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 flex justify-center align-middle"
+              type="button"
+              onClick={() => open()}
+            >
+              <svg
+                className="mr-2"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Zm.394 9.553a1 1 0 0 0-1.817.062l-2.5 6A1 1 0 0 0 8 19h8a1 1 0 0 0 .894-1.447l-2-4A1 1 0 0 0 13.2 13.4l-.53.706-1.276-2.553ZM13 9.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
+              </svg>
+              <span className="content-center">Pujar image</span>
             </button>
           )}
         </CldUploadWidget>
@@ -142,7 +169,13 @@ export default function PinForm() {
         {imageUrl && (
           <img src={imageUrl} alt="preview" style={{ width: 200 }} />
         )}
-        <button className='p-16' type="submit">Enviar Pin</button>
+        <button
+          className="mt-12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full flex justify-center"
+          type="submit"
+        >
+          <SendPin className="mr-2" />
+          <span>Enviar Pin</span>
+        </button>
       </form>
       {submitted && (
         <div className="bg-green-200 text-green-900 p-2 rounded mt-2">

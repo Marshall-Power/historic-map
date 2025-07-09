@@ -1,26 +1,20 @@
 import PinForm from "@/components/PinsForm";
 import { getCurrentUserWithRoles } from "@/lib/getCurrentUser";
+import { redirect } from "next/navigation";
 
 export default async function uploadForm() {
   const user = await getCurrentUserWithRoles();
   const isAuthorized = user?.roles.includes("uploader");
 
   if (!user) {
-    return (
-      <>
-        <div>Not authenticated</div>
-        <a href="/auth/login?returnTo=/upload">Login</a>
-        <a href="/auth/logout">Logout</a>
-      </>
-    );
+    return redirect("/api/auth/login?returnTo=/");
   }
 
   if (!isAuthorized) {
     return (
       <>
-        <div>Not authorized</div>
-        <a href="/auth/login?returnTo=/upload">Login</a>
-        <a href="/auth/logout">Logout</a>
+        <p>No autoritzat</p>
+        <a href="/auth/logout">Entrar</a>
       </>
     );
   }
@@ -32,7 +26,12 @@ export default async function uploadForm() {
           <pre>Hola, {user?.name}</pre>
         </div>
         <PinForm />
-        <a href="/auth/logout">Logout</a>
+        <a
+          className="hover:underline hover:underline-offset-4"
+          href="/auth/logout"
+        >
+          Sortir
+        </a>
       </main>
     </div>
   );
