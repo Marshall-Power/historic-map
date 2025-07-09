@@ -1,4 +1,4 @@
-import PinForm from "@/components/PinsForm";
+import { PinsForm } from "@/components";
 import { getCurrentUserWithRoles } from "@/lib/getCurrentUser";
 import { redirect } from "next/navigation";
 
@@ -25,7 +25,7 @@ export default async function uploadForm() {
         <div>
           <pre>Hola, {user?.name}</pre>
         </div>
-        <PinForm />
+        <PinsForm />
         <a
           className="hover:underline hover:underline-offset-4 flex justify-center"
           href="/auth/logout"
