@@ -1,7 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
 import "leaflet/dist/leaflet.css";
-import Image from "next/image";
 import { Header } from "@/components";
 
 const Map = dynamic(() => import("@/components/LeafletMap"), { ssr: false });
