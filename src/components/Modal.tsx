@@ -32,7 +32,6 @@ export function Modal({ src, alt = "Image preview", onClose }: Props) {
           maxWidth: "90vw",
           maxHeight: "90vh",
           objectFit: "contain",
-          // boxShadow: "0 0 20px black",
         }}
       />
     </div>

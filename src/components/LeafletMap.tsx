@@ -26,14 +26,17 @@ type Pin = {
 export default function Map() {
   const [pins, setPins] = useState<Pin[]>([]);
   const [modalSrc, setModalSrc] = useState<string | null>(null);
-  const [preloadSrc, setPreloadSrc] = useState<string | null>(null);
+
+  const preloadImage = (url: string) => {
+    const img = new Image();
+    img.src = url;
+  };
 
   useEffect(() => {
     fetch("/api/pins")
       .then((res) => res.json())
       .then((data) => setPins(data));
   }, []);
-  console.log(pins);
   return (
     <>
       <MapContainer
@@ -46,10 +49,7 @@ export default function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {pins.map((pin) => (
-          <Marker
-            key={pin._id}
-            position={[pin.latitude, pin.longitude]}
-          >
+          <Marker key={pin._id} position={[pin.latitude, pin.longitude]}>
             <Popup>
               <div>
                 <strong>{pin.street}</strong>
@@ -61,8 +61,8 @@ export default function Map() {
                     alt={pin.description ?? "Historic photo"}
                     crop="fit"
                     gravity="auto"
-                    onMouseOver={() => setPreloadSrc(pin.imageUrl as string)}
-                    onClick={() => setModalSrc(pin.imageUrl as string) }
+                    onMouseOver={() => preloadImage(pin.imageUrl as string)}
+                    onClick={() => setModalSrc(pin.imageUrl as string)}
                   />
                 )}
               </div>
