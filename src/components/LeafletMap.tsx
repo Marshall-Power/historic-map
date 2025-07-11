@@ -41,8 +41,8 @@ export default function Map() {
     <>
       <MapContainer
         center={[41.98311, 2.82493]}
-        zoom={13}
-        style={{ height: "80vh", width: "100%" }}
+        zoom={14}
+        style={{ height: "80vh", width: "80%", alignSelf: "center" }}
       >
         <TileLayer
           attribution="&copy; OpenStreetMap"
