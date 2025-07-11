@@ -1,28 +1,40 @@
-export const Modal = ({
-    src,
-    onClose,
-  }: {
-    src: string;
-    onClose: () => void;
-  }) => (
+"use client";
+
+import Image from "next/image";
+
+type Props = {
+  src: string;
+  alt?: string;
+  onClose: () => void;
+};
+
+export function Modal({ src, alt = "Image preview", onClose }: Props) {
+  return (
     <div
       onClick={onClose}
       style={{
-        position: 'fixed',
+        position: "fixed",
         inset: 0,
-        backgroundColor: 'rgba(0,0,0,0.7)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        backgroundColor: "rgba(0,0,0,0.8)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         zIndex: 9999,
-        cursor: 'zoom-out',
+        cursor: "pointer",
       }}
     >
-      <img
+      <Image
         src={src}
-        alt="High resolution"
-        style={{ maxHeight: '90%', maxWidth: '90%', boxShadow: '0 0 20px black' }}
-        onClick={e => e.stopPropagation()}
+        alt={alt}
+        width={1200}
+        height={800}
+        style={{
+          maxWidth: "90vw",
+          maxHeight: "90vh",
+          objectFit: "contain",
+          // boxShadow: "0 0 20px black",
+        }}
       />
     </div>
   );
+}
