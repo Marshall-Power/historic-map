@@ -1,5 +1,5 @@
 // lib/jwt.ts
-export function decodeJwtPayload(token: string): Record<string, any> {
+function decodeJwtPayload(token: string): Record<string, any> {
     if (!token) return {}
 
     const base64Url = token.split('.')[1]

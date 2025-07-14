@@ -51,10 +51,11 @@ export default function Map() {
         {pins.map((pin) => (
           <Marker key={pin._id} position={[pin.latitude, pin.longitude]}>
             <Popup>
-              <div>
-                <strong>{pin.street}</strong>
+              <div className="flex flex-col ">
+                <span className="bold mb-2">{pin.street}</span>
                 {pin.imageUrl && (
                   <CldImage
+                    className="mx-auto block cursor-zoom-in"
                     src={pin.imageUrl} // This can be public ID or full URL
                     width="100"
                     height="75"

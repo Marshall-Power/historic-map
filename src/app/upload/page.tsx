@@ -1,6 +1,7 @@
 import { PinsForm } from "@/components";
 import { getCurrentUserWithRoles } from "@/lib/getCurrentUser";
 import { redirect } from "next/navigation";
+import { AUTH } from "@/utils";
 
 export default async function uploadForm() {
   const user = await getCurrentUserWithRoles();
@@ -13,8 +14,8 @@ export default async function uploadForm() {
   if (!isAuthorized) {
     return (
       <>
-        <p>No autoritzat</p>
-        <a href="/auth/logout">Entrar</a>
+        <p>{AUTH.NO_AUTH}</p>
+        <a href="/auth/logout">{AUTH.LOGOUT}</a>
       </>
     );
   }
@@ -23,7 +24,9 @@ export default async function uploadForm() {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <div>
-          <pre>Hola, {user?.name}</pre>
+          <pre>
+            {AUTH.HI}, {user?.name}
+          </pre>
         </div>
         <PinsForm />
         <a
@@ -45,7 +48,7 @@ export default async function uploadForm() {
             />
           </svg>
 
-          <span className="align-">Sortir</span>
+          <span className="align-">{AUTH.LOGOUT}</span>
         </a>
       </main>
     </div>

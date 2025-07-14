@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { CldUploadWidget } from "next-cloudinary";
 import { UploadPin, UploadImage } from "@/icons";
+import { PINS_FORM } from "@/utils";
 interface CloudinaryResultType {
   info: {
     secure_url: string;
@@ -80,7 +81,7 @@ export default function PinForm() {
           className="border-solid border-black border-1 rounded-lg px-[12px] py-[4px]"
           type="number"
           name="latitude"
-          placeholder="Latitud"
+          placeholder={PINS_FORM.LATITUDE}
           onChange={handleChange}
           min={-90}
           max={90}
@@ -91,7 +92,7 @@ export default function PinForm() {
           className="border-solid border-black border-1 rounded-lg px-[12px] py-[4px]"
           type="number"
           name="longitude"
-          placeholder="Longitud"
+          placeholder={PINS_FORM.LONGITUDE}
           onChange={handleChange}
           min={-180}
           max={180}
@@ -102,7 +103,7 @@ export default function PinForm() {
           className="border-solid border-black border-1 rounded-lg px-[12px] py-[4px]"
           type="text"
           name="street"
-          placeholder="Carrer"
+          placeholder={PINS_FORM.STREET}
           maxLength={200}
           onChange={handleChange}
         />
@@ -110,14 +111,14 @@ export default function PinForm() {
           className="border-solid border-black border-1 rounded-lg px-[12px] py-[4px]"
           type="text"
           name="altText"
-          placeholder="Text Alt Imatge"
+          placeholder={PINS_FORM.ALT_TEXT}
           onChange={handleChange}
         />
         <input
           className="border-solid border-black border-1 rounded-lg px-[12px] py-[4px]"
           type="number"
           name="yearTaken"
-          placeholder="Any"
+          placeholder={PINS_FORM.YEAR}
           min={1}
           max={new Date().getFullYear()}
           onChange={handleChange}
@@ -125,13 +126,13 @@ export default function PinForm() {
         <textarea
           className="border-solid border-black border-1 rounded-lg px-[12px] py-[4px]"
           name="description"
-          placeholder="Descripció"
+          placeholder={PINS_FORM.DESCRIPTION}
           onChange={handleChange}
         />
         <input
           className="border-solid border-black border-1 rounded-lg px-[12px] py-[4px]"
           name="tags"
-          placeholder="Tags (separats amb commes)"
+          placeholder={PINS_FORM.TAGS}
           onChange={handleChange}
         />
 
@@ -150,7 +151,7 @@ export default function PinForm() {
               onClick={() => open()}
             >
               <UploadImage className="mr-2" />
-              <span className="content-center">Pujar image</span>
+              <span className="content-center">{PINS_FORM.UPLOAD_IMAGE}</span>
             </button>
           )}
         </CldUploadWidget>
@@ -163,12 +164,12 @@ export default function PinForm() {
           type="submit"
         >
           <UploadPin className="mr-2" />
-          <span>Enviar Pin</span>
+          <span>{PINS_FORM.SEND}</span>
         </button>
       </form>
       {submitted && (
         <div className="bg-green-200 text-green-900 p-2 rounded mt-2">
-          Enviat!
+          {PINS_FORM.SENT}
         </div>
       )}
     </>
