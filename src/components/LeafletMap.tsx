@@ -42,7 +42,7 @@ export default function Map() {
       <MapContainer
         center={[41.98311, 2.82493]}
         zoom={14}
-        style={{ height: "80vh", width: "80%", alignSelf: "center" }}
+        className="h-screen w-screen"
       >
         <TileLayer
           attribution="&copy; OpenStreetMap"

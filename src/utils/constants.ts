@@ -12,7 +12,7 @@ export const PINS_FORM = {
     ALT_TEXT: "Text alternatiu",
     YEAR: "Any",
     DESCRIPTION: "Descripció",
-    TAGS: "Tags (separats amb commes)",
+    TAGS: "Tags (separats amb comes)",
     UPLOAD_IMAGE: "Pujar imatge",
     SEND: "Enviar",
     SENT: "Enviat!",

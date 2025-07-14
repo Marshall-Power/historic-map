@@ -146,7 +146,7 @@ export default function PinForm() {
         >
           {({ open }) => (
             <button
-              className="font-bold text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 rounded-full text-sm px-5 py-2.5 text-center my-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 flex justify-center align-middle"
+              className="font-bold text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 rounded-full px-5 py-2.5 text-center my-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 flex justify-center align-middle"
               type="button"
               onClick={() => open()}
             >
@@ -157,20 +157,22 @@ export default function PinForm() {
         </CldUploadWidget>
 
         {imageUrl && (
-          <img src={imageUrl} alt="preview" style={{ width: 200 }} />
+          <img src={imageUrl} alt="preview" className="w-[200px] m-auto" />
         )}
-        <button
-          className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full flex justify-center"
-          type="submit"
-        >
-          <UploadPin className="mr-2" />
-          <span>{PINS_FORM.SEND}</span>
-        </button>
+        {imageUrl && (
+          <button
+            className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full flex justify-center"
+            type="submit"
+          >
+            <UploadPin className="mr-2" />
+            <span>{PINS_FORM.SEND}</span>
+          </button>
+        )}
       </form>
       {submitted && (
-        <div className="bg-green-200 text-green-900 p-2 rounded mt-2">
+        <button className="bg-green-200 text-green-900 p-2 rounded mt-2">
           {PINS_FORM.SENT}
-        </div>
+        </button>
       )}
     </>
   );

@@ -2,7 +2,7 @@ import { AUTH } from "@/utils";
 
 const Header = () => {
   return (
-    <header className="w-full row-start-3 flex gap-[24px] flex-wrap items-center justify-end">
+    <header className="flex-wrap items-center justify-end absolute z-1001 right-15 top-10 bg-white rounded-2xl py-2 px-3">
       <a
         className="hover:underline hover:underline-offset-4 flex justify-center"
         href="/auth/login?returnTo=/upload"
