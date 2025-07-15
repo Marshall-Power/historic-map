@@ -1,7 +1,7 @@
 import { PinsForm } from "@/components";
 import { getCurrentUserWithRoles } from "@/lib/getCurrentUser";
 import { redirect } from "next/navigation";
-import { AUTH } from "@/utils";
+import { AUTH, FORM_STEPS } from "@/utils";
 
 export default async function uploadForm() {
   const user = await getCurrentUserWithRoles();
@@ -38,39 +38,35 @@ export default async function uploadForm() {
           </li>
           <li>
             Escriu l’adreça que vols buscar (per exemple:{" "}
-            <em>Carrer Francesc Mateu, 4, Girona</em>).
+            <em>Carrer de Balmes, 100, Barcelona</em>).
           </li>
           <li>
             Fes <strong>clic dret</strong> sobre el punt exacte al mapa (pot ser
             el marcador vermell o qualsevol altre punt).
           </li>
           <li>
-            Selecciona l’opció <strong>amb les coordenades</strong> del menú
+            Selecciona l’opció <code>41.3933, 2.1581</code>. del menú
             contextual.
           </li>
-          <li>
-            Un cop copiades les coordenades les haurem de separar en un fitxer
-            de text per exemple.
-            <ul className="list-disc pl-6 mt-2">
-              <li>
-                El primer número és la <strong>latitud</strong> (ex:{" "}
-                <code>41.3933</code>).
-              </li>
-              <li>
-                El segon número és la <strong>longitud</strong> (ex:{" "}
-                <code>2.1581</code>).
-              </li>
-            </ul>
-          </li>
-          <li>
-            Selecciona i copia cada valor per separat per enganxar-lo al
-            formulari.
-          </li>
-          <li>
-            Emplena la resta de dades, són importants per a poder fer cerques
-            més endavant.
-          </li>
         </ol>
+        <p className="mt-4">Les coordenades tenen aquest format:</p>
+        <ul className="list-disc pl-6">
+          <li>
+            El primer número és la <strong>latitud</strong> (ex:{" "}
+            <code>41.3933</code>).
+          </li>
+          <li>
+            El segon número és la <strong>longitud</strong> (ex:{" "}
+            <code>2.1581</code>).
+          </li>
+        </ul>
+        <p className="mt-4">
+          Ara pots copiar cada valor per separat i enganxar-lo al teu formulari.
+        </p>
+        <p className="mt-4">
+          Emplena la resta dels camps del formulari, són importants per poder
+          fer cerques de cara al futur.
+        </p>
       </div>
 
       <div className="flex flex-col self-center">
