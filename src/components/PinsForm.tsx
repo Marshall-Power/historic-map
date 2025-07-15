@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { CldUploadWidget } from "next-cloudinary";
 import { UploadPin, UploadImage } from "@/icons";
 import { PINS_FORM } from "@/utils";
+import Image from "next/image";
 interface CloudinaryResultType {
   info: {
     secure_url: string;
@@ -157,7 +158,7 @@ export default function PinForm() {
         </CldUploadWidget>
 
         {imageUrl && (
-          <img src={imageUrl} alt="preview" className="w-[200px] m-auto" />
+          <Image src={imageUrl} alt="preview" className="w-[200px] m-auto" />
         )}
         {imageUrl && (
           <button

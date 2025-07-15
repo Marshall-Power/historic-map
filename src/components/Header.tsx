@@ -2,9 +2,9 @@ import { AUTH } from "@/utils";
 
 const Header = () => {
   return (
-    <header className="flex-wrap items-center justify-end absolute z-1001 right-15 top-10 bg-white rounded-2xl py-2 px-3">
+    <header className="flex-wrap items-center justify-end absolute z-1001 right-5 top-5 md:right-15 sm:top-10 ">
       <a
-        className="hover:underline hover:underline-offset-4 flex justify-center"
+        className="hover:underline hover:underline-offset-4 flex justify-center bg-white rounded-2xl py-2 pl-2 pr-3 cursor-pointer"
         href="/auth/login?returnTo=/upload"
         target="_blank"
         rel="noopener noreferrer"

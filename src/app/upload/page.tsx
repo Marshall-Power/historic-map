@@ -21,13 +21,62 @@ export default async function uploadForm() {
   }
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <div>
-          <pre>
-            {AUTH.HI}, {user?.name}
-          </pre>
-        </div>
+    <main className="flex flex-col md:flex-row justify-center align-middle min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] row-start-2">
+      <div className="prose max-w-none self-center">
+        <h2>Com obtenir la latitud i longitud des de Google Maps</h2>
+        <ol className="list-decimal pl-6 space-y-2">
+          <li>
+            Obre{" "}
+            <a
+              href="https://maps.google.com"
+              target="_blank"
+              className="text-blue-600 underline"
+            >
+              Google Maps
+            </a>
+            .
+          </li>
+          <li>
+            Escriu l’adreça que vols buscar (per exemple:{" "}
+            <em>Carrer Francesc Mateu, 4, Girona</em>).
+          </li>
+          <li>
+            Fes <strong>clic dret</strong> sobre el punt exacte al mapa (pot ser
+            el marcador vermell o qualsevol altre punt).
+          </li>
+          <li>
+            Selecciona l’opció <strong>amb les coordenades</strong> del menú
+            contextual.
+          </li>
+          <li>
+            Un cop copiades les coordenades les haurem de separar en un fitxer
+            de text per exemple.
+            <ul className="list-disc pl-6 mt-2">
+              <li>
+                El primer número és la <strong>latitud</strong> (ex:{" "}
+                <code>41.3933</code>).
+              </li>
+              <li>
+                El segon número és la <strong>longitud</strong> (ex:{" "}
+                <code>2.1581</code>).
+              </li>
+            </ul>
+          </li>
+          <li>
+            Selecciona i copia cada valor per separat per enganxar-lo al
+            formulari.
+          </li>
+          <li>
+            Emplena la resta de dades, són importants per a poder fer cerques
+            més endavant.
+          </li>
+        </ol>
+      </div>
+
+      <div className="flex flex-col self-center">
+        <span className="mb-2">
+          {AUTH.HI}, {user?.name}
+        </span>
         <PinsForm />
         <a
           className="hover:underline hover:underline-offset-4 flex justify-center"
@@ -50,7 +99,7 @@ export default async function uploadForm() {
 
           <span className="align-">{AUTH.LOGOUT}</span>
         </a>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
