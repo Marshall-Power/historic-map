@@ -28,7 +28,7 @@ export default async function uploadForm() {
           <li>
             Obre{" "}
             <a
-              href="https://maps.google.com"
+              href="https://www.google.es/maps?hl=ca"
               target="_blank"
               className="text-blue-600 underline"
             >
@@ -38,15 +38,18 @@ export default async function uploadForm() {
           </li>
           <li>
             Escriu l’adreça que vols buscar (per exemple:{" "}
-            <em>Carrer de Balmes, 100, Barcelona</em>).
+            <em>Carrer Francesc Mateu, 4, Girona</em>).
           </li>
           <li>
             Fes <strong>clic dret</strong> sobre el punt exacte al mapa (pot ser
             el marcador vermell o qualsevol altre punt).
           </li>
           <li>
-            Selecciona l’opció <code>41.3933, 2.1581</code>. del menú
-            contextual.
+            Selecciona l’opció{" "}
+            <strong>
+              <code>41.3933, 2.1581</code>
+            </strong>
+            . del menú contextual.
           </li>
         </ol>
         <p className="mt-4">Les coordenades tenen aquest format:</p>
