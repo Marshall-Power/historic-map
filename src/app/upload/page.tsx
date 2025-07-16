@@ -23,53 +23,47 @@ export default async function uploadForm() {
   return (
     <main className="flex flex-col md:flex-row justify-center align-middle min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] row-start-2">
       <div className="prose max-w-none self-center">
-        <h2>Com obtenir la latitud i longitud des de Google Maps</h2>
+        <h2>{FORM_STEPS.TITLE}</h2>
         <ol className="list-decimal pl-6 space-y-2">
           <li>
-            Obre{" "}
+            {FORM_STEPS.OPEN}
             <a
               href="https://www.google.es/maps?hl=ca"
               target="_blank"
               className="text-blue-600 underline"
             >
-              Google Maps
+              {FORM_STEPS.GOOGLE_MAPS}
             </a>
-            .
           </li>
           <li>
-            Escriu l’adreça que vols buscar (per exemple:{" "}
-            <em>Carrer Francesc Mateu, 4, Girona</em>).
+            {FORM_STEPS.WRITE_ADDRESS}
+            <em>{FORM_STEPS.ADDRESS}</em>
           </li>
           <li>
-            Fes <strong>clic dret</strong> sobre el punt exacte al mapa (pot ser
-            el marcador vermell o qualsevol altre punt).
+            {FORM_STEPS.DO} <strong>{FORM_STEPS.RIGHT_CLICK}</strong>
+            {FORM_STEPS.EXACT_MARKER}
           </li>
           <li>
-            Selecciona l’opció{" "}
+            {FORM_STEPS.SELECT_COORD}
             <strong>
-              <code>41.3933, 2.1581</code>
+              <code>{FORM_STEPS.COORDS}</code>
             </strong>
-            . del menú contextual.
+            {FORM_STEPS.FROM_MENU}
           </li>
         </ol>
-        <p className="mt-4">Les coordenades tenen aquest format:</p>
+        <p className="mt-4">{FORM_STEPS.FORMAT}</p>
         <ul className="list-disc pl-6">
           <li>
-            El primer número és la <strong>latitud</strong> (ex:{" "}
+            {FORM_STEPS.FIRST_NUM} <strong>{FORM_STEPS.LAT}</strong> (ex:{" "}
             <code>41.3933</code>).
           </li>
           <li>
-            El segon número és la <strong>longitud</strong> (ex:{" "}
-            <code>2.1581</code>).
+            {FORM_STEPS.SECOND_NUM}
+            <strong>{FORM_STEPS.LONG}</strong> (ex: <code>2.1581</code>).
           </li>
         </ul>
-        <p className="mt-4">
-          Ara pots copiar cada valor per separat i enganxar-lo al teu formulari.
-        </p>
-        <p className="mt-4">
-          Emplena la resta dels camps del formulari, són importants per poder
-          fer cerques de cara al futur.
-        </p>
+        <p className="mt-4">{FORM_STEPS.COPY_COORD}</p>
+        <p className="mt-4">{FORM_STEPS.FILL_REST}</p>
       </div>
 
       <div className="flex flex-col self-center">
