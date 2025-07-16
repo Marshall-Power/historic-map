@@ -1,6 +1,7 @@
 import { PinsForm } from "@/components";
 import { getCurrentUserWithRoles } from "@/lib/getCurrentUser";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { AUTH, FORM_STEPS } from "@/utils";
 
 export default async function uploadForm() {
@@ -71,7 +72,7 @@ export default async function uploadForm() {
           {AUTH.HI}, {user?.name}
         </span>
         <PinsForm />
-        <a
+        <Link
           className="hover:underline hover:underline-offset-4 flex justify-center"
           href="/auth/logout"
         >
@@ -91,7 +92,7 @@ export default async function uploadForm() {
           </svg>
 
           <span className="align-">{AUTH.LOGOUT}</span>
-        </a>
+        </Link>
       </div>
     </main>
   );

@@ -33,7 +33,7 @@ export const FORM_STEPS = {
     FORMAT: "Les coordenades tenen aquest format:",
     FIRST_NUM: "El primer número és la ",
     SECOND_NUM: "El segon número és la ",
-    COPY_COORD: "Ara pots copiar cada valor per separat i enganxar-lo al teu formulari.",
+    COPY_COORD: "Ara pots copiar cada valor per separat i enganxar-lo al formulari.",
     FILL_REST: "Emplena la resta de dades, són importants per a poder fer cerques més endavant.",
     LAT: "latitud",
     LONG: "longitud",
