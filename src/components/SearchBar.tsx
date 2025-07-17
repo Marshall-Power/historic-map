@@ -3,7 +3,11 @@ import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { Search } from "@/icons";
 
-export default function SearchForm() {
+interface SearchFromProps {
+  placeholderText?: string;
+}
+
+export default function SearchForm({ placeholderText }: SearchFromProps) {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -15,10 +19,10 @@ export default function SearchForm() {
 
   return (
     <form
-      className="flex bg-white absolute left-1/2 transform -translate-x-1/2 rounded-2xl py-2 px-3"
+      className="flex bg-white absolute left-1/2 transform -translate-x-1/2 rounded-2xl py-2 px-3 z-10001 border"
       onSubmit={handleSubmit}
     >
-      <input ref={inputRef} placeholder="e.g. Francesc Mateu" />
+      <input ref={inputRef} placeholder={placeholderText} />
       <button type="submit">
         {<Search className="size-[24px] cursor-pointer ml-2" />}
       </button>

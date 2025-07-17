@@ -37,5 +37,8 @@ export const FORM_STEPS = {
     FILL_REST: "Emplena la resta de dades, són importants per a poder fer cerques més endavant.",
     LAT: "latitud",
     LONG: "longitud",
+}
 
+export const SEARCHBAR = {
+    PLACEHOLDER: "e.g. Francesc Mateu",
 }

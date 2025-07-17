@@ -5,6 +5,7 @@ import { CldUploadWidget } from "next-cloudinary";
 import { UploadPin, UploadImage } from "@/icons";
 import { PINS_FORM } from "@/utils";
 import Image from "next/image";
+
 interface CloudinaryResultType {
   info: {
     secure_url: string;

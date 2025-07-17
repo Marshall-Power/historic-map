@@ -1,3 +1,5 @@
+import { Card, SearchBar } from "@/components";
+
 export default async function SearchPage({
   searchParams,
 }: {
@@ -14,18 +16,16 @@ export default async function SearchPage({
   );
 
   const pins = await res.json();
-
   return (
-    <div>
-      <h1>Results for “{query}”</h1>
+    <div className="p-2">
+      <SearchBar />
       {pins.map((pin: any) => (
-        <div key={pin._id}>
-          <h2>
-            {pin.street} ({pin.yearTaken})
-          </h2>
-          <p></p>
-          <img src={pin.imageUrl} alt={pin.title} />
-        </div>
+        <Card
+          key={pin._id.toString()}
+          imageSrc={pin.imageUrl}
+          title={pin.street}
+          text={pin.description}
+        />
       ))}
     </div>
   );
