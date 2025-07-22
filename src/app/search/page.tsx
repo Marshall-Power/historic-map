@@ -3,7 +3,7 @@ import { Card, SearchBar } from "@/components";
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: { q?: string };
+  searchParams: Promise<{ q?: string }>;
 }) {
   const params = await searchParams;
   const query = params.q || "";
