@@ -19,14 +19,16 @@ export default async function SearchPage({
   return (
     <div className="p-2">
       <SearchBar />
-      {pins.map((pin: any) => (
-        <Card
-          key={pin._id.toString()}
-          imageSrc={pin.imageUrl}
-          title={pin.street}
-          text={pin.description}
-        />
-      ))}
+      <div className="pt-20 grid grid-cols-[repeat(auto-fill,_minmax(calc(16px+16.2rem),_1fr))] gap-x-4">
+        {pins.map((pin: any) => (
+          <Card
+            key={pin._id.toString()}
+            imageSrc={pin.imageUrl}
+            title={pin.street}
+            text={pin.description}
+          />
+        ))}
+      </div>
     </div>
   );
 }
