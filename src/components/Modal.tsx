@@ -19,7 +19,7 @@ export function Modal({ src, alt = "Image preview", onClose }: Props) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        zIndex: 9999,
+        zIndex: 99999,
         cursor: "pointer",
       }}
     >

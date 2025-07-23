@@ -1,6 +1,15 @@
-import { Card } from "@/components";
+"use client";
+import { useState } from "react";
+import { Card, Modal } from "@/components";
 
-export const CardList = (pins: any) => {
+export const CardList = ({ pins }: any) => {
+  const [modalSrc, setModalSrc] = useState<string | null>(null);
+
+  const preloadImage = (url: string) => {
+    const img = new Image();
+    img.src = url;
+  };
+
   return (
     <>
       {pins.map((pin: any) => (
@@ -9,8 +18,10 @@ export const CardList = (pins: any) => {
           imageSrc={pin.imageUrl}
           title={pin.street}
           text={pin.description}
+          onClickImage={() => setModalSrc(pin.imageUrl as string)}
         />
       ))}
+      {modalSrc && <Modal src={modalSrc} onClose={() => setModalSrc(null)} />}
     </>
   );
 };

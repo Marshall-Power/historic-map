@@ -1,4 +1,4 @@
-import { Card, SearchBar } from "@/components";
+import { CardList, SearchBar } from "@/components";
 
 export default async function SearchPage({
   searchParams,
@@ -20,14 +20,7 @@ export default async function SearchPage({
     <div className="p-2">
       <SearchBar />
       <div className="pt-20 grid grid-cols-[repeat(auto-fill,_minmax(calc(16px+16.2rem),_1fr))] gap-x-4">
-        {pins.map((pin: any) => (
-          <Card
-            key={pin._id.toString()}
-            imageSrc={pin.imageUrl}
-            title={pin.street}
-            text={pin.description}
-          />
-        ))}
+        <CardList pins={pins} />
       </div>
     </div>
   );
