@@ -4,3 +4,4 @@ export { Modal } from './Modal';
 export { default as PinsForm } from './PinForm';
 export { default as SearchBar } from './SearchBar';
 export { Card } from './Card';
+export { CardList } from './CardList';
