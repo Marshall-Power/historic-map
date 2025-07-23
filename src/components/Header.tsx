@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { AUTH } from "@/utils";
 import { SearchBar } from "@/components";
 import Link from "next/link";
@@ -6,7 +7,9 @@ import { SEARCHBAR } from "@/utils/constants";
 const Header = () => {
   return (
     <header className="absolute w-full flex justify-end items-center z-1001 p-2">
-      <SearchBar placeholderText={SEARCHBAR.PLACEHOLDER} />
+      <Suspense>
+        <SearchBar placeholderText={SEARCHBAR.PLACEHOLDER} />
+      </Suspense>
       <Link
         className="hover:underline hover:underline-offset-4 flex justify-center bg-white rounded-2xl py-2 pl-2 pr-3 cursor-pointer"
         href="/auth/login?returnTo=/upload"

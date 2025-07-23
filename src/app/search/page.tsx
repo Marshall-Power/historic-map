@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { CardList, SearchBar } from "@/components";
 
 export default async function SearchPage({
@@ -18,7 +19,9 @@ export default async function SearchPage({
   const pins = await res.json();
   return (
     <div className="p-2">
-      <SearchBar />
+      <Suspense>
+        <SearchBar />
+      </Suspense>
       <div className="pt-20 grid grid-cols-[repeat(auto-fill,_minmax(calc(16px+16.2rem),_1fr))] gap-x-4">
         <CardList pins={pins} />
       </div>
