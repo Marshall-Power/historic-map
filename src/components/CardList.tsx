@@ -5,11 +5,6 @@ import { Card, Modal } from "@/components";
 export const CardList = ({ pins }: any) => {
   const [modalSrc, setModalSrc] = useState<string | null>(null);
 
-  const preloadImage = (url: string) => {
-    const img = new Image();
-    img.src = url;
-  };
-
   return (
     <>
       {pins.map((pin: any) => (
