@@ -1,6 +1,6 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Search } from "@/icons";
 
 interface SearchFromProps {
@@ -9,7 +9,15 @@ interface SearchFromProps {
 
 export default function SearchForm({ placeholderText }: SearchFromProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const q = searchParams.get("q");
+    if (q && inputRef.current) {
+      inputRef.current.value = q;
+    }
+  }, [searchParams]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
