@@ -72,10 +72,7 @@ export default async function uploadForm() {
           {AUTH.HI}, {user?.name}
         </span>
         <PinsForm />
-        <Link
-          className="hover:underline hover:underline-offset-4 flex justify-center"
-          href="/auth/logout"
-        >
+        <Link className="flex justify-center" href="/auth/logout">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

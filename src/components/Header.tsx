@@ -11,7 +11,7 @@ const Header = () => {
         <SearchBar placeholderText={SEARCHBAR.PLACEHOLDER} />
       </Suspense>
       <Link
-        className="hover:underline hover:underline-offset-4 justify-center bg-white rounded-2xl py-2 pl-2 pr-3 cursor-pointer hidden md:flex "
+        className="active:scale-[0.98] transition duration-150 justify-center bg-white rounded-2xl py-2 pl-2 pr-3 cursor-pointer hidden md:flex "
         href="/auth/login?returnTo=/upload"
         target="_blank"
         rel="noopener noreferrer"
